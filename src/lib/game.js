@@ -70,7 +70,6 @@ function tick(current) {
  * Býr til nýja spurningu og sýnir undir .problem__question
  */
 function showQuestion() {
-  // todo útfæra
   currentProblem = new Question();
   total += 1;
   const problemQuestion = problem.querySelector('.problem__question');
@@ -94,7 +93,6 @@ function nullStilla() {
  * - Sýnir fyrstu spurningu
  */
 function start() {
-  // todo útfæra\
   nullStilla();
   startButton.classList.add('button--hidden');
   problem.classList.remove('problem--hidden');
@@ -116,7 +114,7 @@ function onSubmit(e) {
   if (parseInt(inp, 10) === currentProblem.answer) {
     correct += 1;
   }
-  // todo útfært
+
   problemInput.value = '';
   showQuestion();
 }

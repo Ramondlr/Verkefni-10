@@ -13,7 +13,6 @@ import * as helper from './helpers';
  * @returns {number} Stig fyrir svör
  */
 export function score(total, correct, time) {
-  // todo útfæra
   if (correct === 0) { return 0; }
   const number = (((correct / total) ** 2) + correct) * total / time;
   return Math.round(number) * 100;
@@ -42,7 +41,6 @@ export default class Highscore {
    * Hreinsa allar færslur úr stigatöflu, tengt við takka .highscore__button
    */
   clear() {
-    // todo útfæra
     storage.clear();
     helper.empty(this.scores);
 
@@ -58,7 +56,6 @@ export default class Highscore {
    * @param {array} data Fylki af færslum í stigatöflu
    */
   highscore(data) {
-    // todo útfæra
     if (data.length <= 0) {
       return;
     }
