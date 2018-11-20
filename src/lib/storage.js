@@ -4,6 +4,7 @@
 
 // Fast sem skilgreinir heiti á lykli sem vistað er undir í localStorage
 const LOCALSTORAGE_KEY = 'calc_game_scores';
+let itemsArray = [];
 
 /**
  * Sækir gögn úr localStorage. Skilað sem röðuðum lista á forminu:
@@ -12,7 +13,10 @@ const LOCALSTORAGE_KEY = 'calc_game_scores';
  * @returns {array} Raðað fylki af svörum eða tóma fylkið ef ekkert vistað.
  */
 export function load() {
-  // todo útfæra
+  if (localStorage.getItem(LOCALSTORAGE_KEY)) {
+    itemsArray = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
+  }
+  return itemsArray;
 }
 
 /**
@@ -22,12 +26,15 @@ export function load() {
  * @param {number} points Stig sem á að vista
  */
 export function save(name, points) {
-  // todo útfæra
+  const data = { points, name };
+  itemsArray.push(data);
+  itemsArray.sort((a, b) => Number(b.points) - Number(a.points));
+  localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(itemsArray));
 }
-
 /**
  * Hreinsa öll stig úr localStorage
  */
 export function clear() {
-  // todo útfæra
+  window.localStorage.removeItem(LOCALSTORAGE_KEY);
+  itemsArray = [];
 }
